@@ -97,6 +97,7 @@ class AttendanceMethodFinish extends StatelessWidget {
                         print('lecture name is $LECTURENAME');
                         navigateAndFinish(context, const HomeScreen());
 
+
                       },
                     ),
                   ],
