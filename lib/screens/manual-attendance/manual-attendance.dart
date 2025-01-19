@@ -19,8 +19,6 @@ class ManualAttendance extends StatelessWidget {
   Widget build(BuildContext context) {
     var IDcontroller = TextEditingController();
     var formKey = GlobalKey<FormState>();
-    var lectureName;
-    lectureName=CacheHelper.getdata(key: 'lectureName');
     return BlocProvider(
       create: (BuildContext context) => HomePageCubit()..getCourses(),
       child: BlocConsumer<HomePageCubit,HomePageState>(
@@ -110,8 +108,9 @@ class ManualAttendance extends StatelessWidget {
                             HomePageCubit.get(context).addManualAttendance(
                                 COURSEID!,
                                 studentID,
-                                'Manuall test7',
+                                'lecture $LECTURENAME',
                                 DateTime.now().toString());
+                            print('lecture number is $LECTURENAME');
 
                           }
                         },

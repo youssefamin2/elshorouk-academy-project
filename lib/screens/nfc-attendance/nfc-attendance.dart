@@ -6,7 +6,6 @@ import 'package:univerisity_system/helper/toast.dart';
 import 'package:univerisity_system/screens/finissh-attendance-method/finish-attendance-method.dart';
 import 'package:univerisity_system/shared/cubit/cubit.dart';
 import 'package:univerisity_system/shared/cubit/states.dart';
-import 'package:univerisity_system/shared/local/shared-prefrence.dart';
 import 'package:univerisity_system/widgets/custom_button.dart';
 
 
@@ -41,7 +40,7 @@ class NfcAttendance extends StatelessWidget {
 
                       HomePageCubit.get(context).addStudentAttendanceFromNfc(
                         COURSEID!,
-                        'Manuall test9',
+                        'lecture $LECTURENAME',
                         DateTime.now().toString()
                       );
                      // Replace 'courseID' dynamically

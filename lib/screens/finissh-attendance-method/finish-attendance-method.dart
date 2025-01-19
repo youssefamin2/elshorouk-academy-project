@@ -19,8 +19,6 @@ class AttendanceMethodFinish extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Get the current lecture name from CacheHelper and ensure it's a String
-    final lectureName = CacheHelper.getdata(key: 'lectureName').toString();
-
     return BlocProvider(
       create: (context) => HomePageCubit(),
       child: BlocConsumer<HomePageCubit, HomePageState>(
@@ -84,8 +82,10 @@ class AttendanceMethodFinish extends StatelessWidget {
                     CustomButton(
                       text: 'Finish',
                       onTap: () {
-                        final lectureName = CacheHelper.getdata(key: 'lectureName').toString();
-                        int lectureNumber = int.tryParse(lectureName) ?? 0;
+                        print('lecture name is $LECTURENAME');
+                        print('========================');
+                        int lectureNumber = int.tryParse(LECTURENAME) ?? 0;
+                        print('lecture number is $lectureNumber');
 
                         lectureNumber++;
                         CacheHelper.saveData(
@@ -93,12 +93,10 @@ class AttendanceMethodFinish extends StatelessWidget {
                           value: lectureNumber.toString(),
                         );
 
-                        // Finalize and update Firestore
-                        // HomePageCubit.get(context).finalizeLecture(
-                        //   COURSEID!,
-                        //   'Lecture $lectureNumber', // Updated lecture name
-                        //   DateTime.now().toString(), // Current date/time
-                        // );
+                        LECTURENAME=lectureNumber.toString();
+                        print('lecture name is $LECTURENAME');
+                        navigateAndFinish(context, const HomeScreen());
+
                       },
                     ),
                   ],
