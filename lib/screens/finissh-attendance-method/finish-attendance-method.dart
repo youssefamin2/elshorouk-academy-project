@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:univerisity_system/constants.dart';
@@ -82,10 +83,16 @@ class AttendanceMethodFinish extends StatelessWidget {
                     CustomButton(
                       text: 'Finish',
                       onTap: () {
-                        print('lecture name is $LECTURENAME');
-                        print('========================');
+                        if (kDebugMode) {
+                          print('lecture name is $LECTURENAME');
+                        }
+                        if (kDebugMode) {
+                          print('========================');
+                        }
                         int lectureNumber = int.tryParse(LECTURENAME) ?? 0;
-                        print('lecture number is $lectureNumber');
+                        if (kDebugMode) {
+                          print('lecture number is $lectureNumber');
+                        }
 
                         lectureNumber++;
                         CacheHelper.saveData(
@@ -94,9 +101,10 @@ class AttendanceMethodFinish extends StatelessWidget {
                         );
 
                         LECTURENAME=lectureNumber.toString();
-                        print('lecture name is $LECTURENAME');
+                        if (kDebugMode) {
+                          print('lecture name is $LECTURENAME');
+                        }
                         navigateAndFinish(context, const HomeScreen());
-
 
                       },
                     ),

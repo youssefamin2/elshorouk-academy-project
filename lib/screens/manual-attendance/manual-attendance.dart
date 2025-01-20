@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:univerisity_system/constants.dart';
 import 'package:univerisity_system/helper/navigate.dart';
+import 'package:univerisity_system/helper/toast.dart';
 import 'package:univerisity_system/screens/finissh-attendance-method/finish-attendance-method.dart';
 import 'package:univerisity_system/shared/cubit/cubit.dart';
 import 'package:univerisity_system/shared/cubit/states.dart';
@@ -24,6 +25,14 @@ class ManualAttendance extends StatelessWidget {
       child: BlocConsumer<HomePageCubit,HomePageState>(
         listener:(context,state)
         {
+          if(State is AddStudentAttendanceSuccessState)
+          {
+            showToast(message: "Attendance recorded successfully!",color: Colors.green);
+
+          }else if(state is AddStudentAttendanceErrorState)
+          {
+            showToast(message: state.error, color: Colors.red);
+          }
 
         },
         builder: (context,state)
@@ -88,7 +97,7 @@ class ManualAttendance extends StatelessWidget {
                       ),
                        Row(
                         children: [
-                          Spacer(flex:10),
+                          const Spacer(flex:10),
                           Text(
                             'counter:${HomePageCubit.get(context).count}',
                             style: const TextStyle(

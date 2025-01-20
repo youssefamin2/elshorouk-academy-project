@@ -21,9 +21,9 @@ class NfcAttendance extends StatelessWidget {
       child: BlocConsumer<HomePageCubit, HomePageState>(
         listener: (context, state) {
           if (state is AddStudentAttendanceSuccessState) {
-            showToast(message: "Attendance recorded successfully!");
+            showToast(message: "Attendance recorded successfully!",color: Colors.green);
           } else if (state is AddStudentAttendanceErrorState) {
-            showToast(message: state.error);
+            showToast(message: state.error,color: Colors.red);
           }
         },
         builder: (context, state) {

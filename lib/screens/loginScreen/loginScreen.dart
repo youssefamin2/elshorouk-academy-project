@@ -24,10 +24,10 @@ class LoginScreen extends StatelessWidget {
           if (state is LoginSuccessState) {
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
                 (route) => false);
           } else if (state is LoginErrorState) {
-            showToast(message: 'Wrong email or password');
+            showToast(message: 'Wrong email or password',color: Colors.red);
           }
         },
         builder: (context, state) {
